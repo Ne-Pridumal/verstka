@@ -3,14 +3,19 @@
 function readinput(string $quest){
 	echo $quest.": ";
 	$input = trim(fgets(STDIN));
-	if($input == "true"){
-		$input = true;
+	switch ($input){
+		case "true":
+			return true;
+		case "false":
+			return false;
+    }
+    if (is_numeric($input)){
+    	return +$input;
 	}
-	elseif($input == "false"){
-		$input = false;
+	if ($input === "!stop"){
+		return null;
 	}
-	elseif (is_numeric($input)){
-		$input = +$input;
+	if (is_string($input)){
+		return $input;
 	}
-	return $input;
 }
